@@ -2,10 +2,6 @@
 
 Hey! 👋 This is my user management system built using Spring MVC. It's pretty basic but gets the job done - basically lets you add/edit/delete users and keep track of their info.
 
-## Quick Spring Concepts Explanation
-
-Before diving in, here are some key Spring concepts you should know:
-
 ### Spring MVC - Web Request Handling
 It's a pattern that splits the web app into 3 parts:
 - Model: just the data/objects (like User class in my case)
