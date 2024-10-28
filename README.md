@@ -1,128 +1,103 @@
 # TechNova User Management System
 
-## Project Overview
-TechNova is a Spring MVC-based web application for managing user records. The system allows for storing and managing user information including identification details, nationality, registration dates, and expiration dates.
+hey! 👋 this is my user management system i built using Spring MVC. its pretty basic but gets the job done - basically lets you add/edit/delete users and keep track of their info.
 
-## Features
-- User Management CRUD Operations
-    - Create new user records
-    - Retrieve user information by ID or identification number
-    - Update existing user records
-    - Delete user records
-- View all users in a tabular format
-- Track registration and expiration dates
-- Monitor user status (active/inactive)
+## what it does
 
-## Technical Stack
-- **Framework**: Spring MVC 6.x
-- **ORM**: Spring Data JPA/Hibernate
-- **Database**: PostgreSQL
-- **View Technology**: JSP (JavaServer Pages)
-- **Build Tool**: Maven
-- **Server**: Apache Tomcat 10.x
-- **Java Version**: 17 or higher
+- lets you do all the basic user stuff (add new ones, look up existing users, change their info, delete em if needed)
+- shows everyone in a nice table view
+- keeps track of when people register and when their stuff expires
+- shows if users are active or not
 
-## Project Structure
+## tech i used
+
+- Spring MVC 6.x cuz its solid and i know it well
+- JPA/Hibernate for database stuff
+- PostgreSQL for the database
+- JSP for the frontend (yeah i know its old school but it works lol)
+- Maven for building
+- Tomcat 10.x to run it
+- Java 17+ (make sure u have this or it wont work)
+
+## how its organized
+
 ```
+its pretty standard Spring structure:
 TechNova/
 ├── src/
 │   ├── main/
-│   │   ├── java/
-│   │   │   └── com/demo/technova/
-│   │   │       ├── controller/
-│   │   │       │   └── UserController.java
-│   │   │       ├── model/
-│   │   │       │   └── User.java
-│   │   │       ├── repository/
-│   │   │       │   └── UserRepository.java
-│   │   │       └── service/
-│   │   │           ├── Implementations/
-│   │   │           │   └── UserServiceImpl.java
-│   │   │           └── Interfaces/
-│   │   │               └── UserService.java
-│   │   ├── resources/
-│   │   │   └── database.properties
-│   │   └── webapp/
-│   │       └── WEB-INF/
-│   │           ├── views/
-│   │           │   └── list.jsp
-│   │           ├── applicationContext.xml
-│   │           ├── dispatcher.xml
-│   │           └── web.xml
-│   └── test/
+│   │   ├── java/           -> all the java code
+│   │   ├── resources/      -> config stuff
+│   │   └── webapp/         -> web files
+│   └── test/               -> tests (todo: add more lol)
 └── pom.xml
 ```
 
-## Prerequisites
-1. JDK 17 or higher
-2. Maven 3.6.x or higher
-3. PostgreSQL 12 or higher
-4. Apache Tomcat 10.x
+## before u start
 
-## Database Configuration
-1. Create a PostgreSQL database named `technova`
-2. Default database configuration (can be modified in `database.properties`):
+grab these:
+1. JDK 17 or newer
+2. Maven 3.6.x+
+3. PostgreSQL 12+
+4. Tomcat 10.x
+
+## database setup
+
+1. make a postgres database called `technova`
+2. database config is in `database.properties`:
    ```properties
-   jdbc.url=jdbc:postgresql://localhost:2004/technova
-   jdbc.username=postgres
-   jdbc.password=2004
+   jdbc.url=jdbc:postgresql://localhost:5444/technova
+   jdbc.username=myuser
+   jdbc.password=AZERAZER1234
    ```
+   change these if u need to
 
-## Installation & Setup
-1. Clone the repository:
+## getting it running
+
+1. clone it:
    ```bash
    git clone [repository-url]
    ```
 
-2. Navigate to project directory:
+2. go to the folder:
    ```bash
    cd TechNova
    ```
 
-3. Build the project:
+3. build it:
    ```bash
    mvn clean install
    ```
 
-4. Deploy the WAR file to Tomcat:
-    - Copy `target/TechNova-1.0-SNAPSHOT.war` to Tomcat's `webapps` directory
-    - Or deploy through Tomcat Manager UI
+4. stick it in tomcat:
+   - dump `target/TechNova-1.0-SNAPSHOT.war` in tomcat's `webapps` folder
+   - or use tomcat manager if ur fancy
 
-## User Entity Structure
-```java
-- id (Long): Primary key
-- firstName (String): User's first name
-- lastName (String): User's last name
-- identificationNumber (String): Unique identifier
-- nationality (String): User's nationality
-- registrationDate (LocalDate): Date of registration
-- expirationDate (LocalDate): Document expiration date
-- active (boolean): User's active status
-```
+## user stuff it stores
 
-## API Endpoints
-- `GET /`: Display list of all users
-- Additional endpoints to be implemented:
-    - `POST /users`: Create new user
-    - `GET /users/{id}`: Get user by ID
-    - `PUT /users/{id}`: Update user
-    - `DELETE /users/{id}`: Delete user
+basically each user has:
+- id (just a number)
+- first name
+- last name
+- some ID number (like passport or whatever)
+- where theyre from
+- when they signed up
+- when their docs expire
+- if theyre still active
 
-## Best Practices Implemented
-1. **Layered Architecture**
-    - Controller layer for handling HTTP requests
-    - Service layer for business logic
-    - Repository layer for data access
-    - Clear separation of concerns
+## api endpoints
 
-2. **Dependency Injection**
-    - Constructor-based injection for required dependencies
-    - Use of interfaces for loose coupling
+rn it just has:
+- `GET /`: shows all users
 
-3. **Data Validation**
-    - Entity-level validation using JPA annotations
-    - Service-level validation for business rules
 
-4. **Transaction Management**
-    - Declarative transaction management using `@Transactional`
 
+## how i built it
+
+tried to keep it clean:
+1. split everything into layers (controllers, services, repos)
+2. used dependency injection cuz its cleaner
+3. added some validation so people cant put in garbage data
+4. proper transaction stuff so the database doesnt get messed up
+
+lmk if u have questions or find any bugs! 🐛
